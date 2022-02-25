@@ -1,0 +1,170 @@
+﻿@page
+@model Agahi.Pages.SearchModel
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+
+
+<h1>مشاغل:</h1>
+
+<p>
+    <from>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" id="title" for="SearchCriteria">عنوان</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="SearchCriteria" name="SearchCriteria" value="findAJob" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" id="title" for="groupSelect">گروه </label>
+            <div class="col-sm-10">
+                <select class="form-control" id="groupSelect" name="GroupSearch">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="-">Other</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" id="title" for="citySelect">شهر</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="citySelect" name="CitySearch">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="-">Other</option>
+                </select>
+            </div>
+        </div>
+        <fieldset class="form-group">
+
+            <div class="row">
+
+                <legend class="col-form-label col-sm-2 pt-0">نوع همکاری</legend>
+
+                <div class="col-sm-10">
+
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" id="title" for="IsPartOrFullTimeRadio">تمام یا پاره وقت</label>
+                        <input type="radio" class="form-check-input" id="IsPartOrFullTimeRadio" name="IsPartTimeSearch" value="" checked />
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label id="title" class="form-check-label" for="IsFullTimeRadio">تمام وقت</label>
+                        <input type="radio" class="form-check-input" id="IsFullTimeRadio" name="IsPartTimeSearch" value="0" />
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label id="title" class="form-check-label" for="IsPartTimeRadio">پاره وقت</label>
+                        <input type="radio" class="form-check-input" id="IsPartTimeRadio" name="IsPartTimeSearch" value="1" />
+                    </div>
+
+                </div>
+            </div>
+
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="row">
+
+                <legend class="col-form-label col-sm-2 pt-0">جنسیت</legend>
+                <div class="col-sm-10">
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="MaleOrFemaleGenderRadio">آقا یا خانم</label>
+                        <input type="radio" class="form-check-input" id="MaleOrFemaleGenderRadio" name="GenderSearch" value="" checked />
+                    </div>
+                    <div class="form-check form-check-inline">
+
+
+                        <label class="form-check-label" for="MaleGenderRadio">آقا</label>
+                        <input type="radio" class="form-check-input" id="MaleGenderRadio" name="GenderSearch" value="1" />
+                    </div>
+                    <div class="form-check form-check-inline">
+
+                        <label class="form-check-label" for="FemaleGenderRadio">خانم</label>
+                        <input type="radio" class="form-check-input" id="FemaleGenderRadio" name="GenderSearch" value="0" />
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </from>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ad[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ad[0].Contact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ad[0].ExpireDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ad[0].IsPartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ad[0].Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ad[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ad[0].Deleted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ad[0].RegistrationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ad[0].City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ad[0].Group)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Ad)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contact)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpireDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsPartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Deleted)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RegistrationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Group.Keywords)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

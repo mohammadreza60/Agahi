@@ -1,0 +1,15 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">به سامانه آگهی مشاغل خوش آمدید</h1>
+    <form  action="/Search">
+        <input type="text" id="SearchCriteria" name="SearchCriteria" value="findAJob"  />
+        <input type="submit" value="بگرد"  />
+
+    </form>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
